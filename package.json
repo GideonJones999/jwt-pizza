@@ -10,9 +10,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
-    "test:coverage": "nyc --reporter=json-summary --reporter=text playwright test"
+    "test:coverage": "npm run clean-coverage && playwright test && nyc report",
+    "test:coverage:windows": "npm run clean-coverage && playwright test && nyc report",
+    "clean-coverage": "node -e \"const fs = require('fs'); const path = require('path'); ['./coverage', './.nyc_output'].forEach(dir => { if (fs.existsSync(dir)) { fs.rmSync(dir, { recursive: true, force: true }); } });\""
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.2.3",
     "@types/react": "^18.3.3",

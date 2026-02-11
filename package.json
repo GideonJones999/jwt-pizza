@@ -10,7 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
-    "test:coverage": "npm run clean-coverage && playwright test && nyc report",
+    "test:coverage": "npm run clean-coverage && playwright test && nyc report --reporter=text --reporter=json-summary",
     "test:coverage:windows": "npm run clean-coverage && playwright test && nyc report",
     "clean-coverage": "node -e \"const fs = require('fs'); const path = require('path'); ['./coverage', './.nyc_output'].forEach(dir => { if (fs.existsSync(dir)) { fs.rmSync(dir, { recursive: true, force: true }); } });\""
   },
